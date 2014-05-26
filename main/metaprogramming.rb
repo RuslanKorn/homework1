@@ -11,7 +11,7 @@ class Module
         end
         def #{method}_history
          @save ||= []
-         p @save
+         @save
         end
       }
     end
