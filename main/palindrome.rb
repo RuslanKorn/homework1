@@ -3,7 +3,7 @@ module Palindrome
 
   def palindrome?(str)
    ret = false
-   str.gsub!(/[ ,]/, "")
+   str.gsub(/[ ,]/, "")
    ret = true if str.downcase == str.downcase.reverse
    ret
   end
