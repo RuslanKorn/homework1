@@ -6,7 +6,7 @@ module Anagram
     anagrams = []
     return anagrams if str.empty?
     str = " #{str}"
-    arr = str.downcase.gsub!(/[ ,-.]/, " ").split(" ")
+    arr = str.downcase.gsub(/[ ,-.]/, " ").split(" ")
     arr_sort = arr.map {|i| i.chars.sort_by(&:downcase).join}
     i, k = 0, 0
     while(i != arr_sort.size)
