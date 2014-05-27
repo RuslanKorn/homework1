@@ -1,25 +1,24 @@
 module Anagram
   extend self
 
-  def anagrams(str)
-    arr_new = []
-    anagrams = []
-    return anagrams if str.empty?
-    str = " #{str}"
-    arr = str.downcase.gsub(/[ ,-.]/, " ").split(" ")
-    arr_sort = arr.map {|i| i.chars.sort_by(&:downcase).join}
-    i, k = 0, 0
-    while(i != arr_sort.size)
-      while (k != arr_sort.size)
-        arr_new << arr[k] if arr_sort[i] == arr_sort[k]
-        k += 1
+def anagrams(str)
+  str = str.downcase.split(/\W+/)
+  anagrams = []
+  while str.size > 0 do
+    x = 0
+    temp = [str[x]]
+    y = x + 1
+    while y < str.size do
+      if (str[x].downcase.split("").sort  == str[y].downcase.split("").sort)
+        temp << str[y]
+        str.delete_at(y)
+      else
+        y = y + 1
       end
-      anagrams << arr_new.uniq
-      arr_new.clear
-      i += 1
-      k = i
-      break if anagrams.flatten.size == arr.size
     end
-    anagrams
+    anagrams << temp
+    str.delete_at(x)
   end
+  anagrams
+end
 end
